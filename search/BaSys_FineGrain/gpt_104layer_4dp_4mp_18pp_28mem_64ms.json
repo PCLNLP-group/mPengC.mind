@@ -1,0 +1,254 @@
+[
+    {
+        "LINEAR_GELU": 0,
+        "LINEAR_MAPPING": 0,
+        "LINEAR_INPUT": 4,
+        "ATTENTION_BMM": 0,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 0,
+        "ATTENTION_QKV": 6,
+        "stage_idx": 0,
+        "layer_range": [
+            0,
+            8
+        ]
+    },
+    {
+        "LINEAR_GELU": 0,
+        "LINEAR_MAPPING": 0,
+        "LINEAR_INPUT": 3,
+        "ATTENTION_BMM": 0,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 0,
+        "ATTENTION_QKV": 0,
+        "stage_idx": 1,
+        "layer_range": [
+            9,
+            20
+        ]
+    },
+    {
+        "LINEAR_GELU": 0,
+        "LINEAR_MAPPING": 0,
+        "LINEAR_INPUT": 3,
+        "ATTENTION_BMM": 0,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 0,
+        "ATTENTION_QKV": 0,
+        "stage_idx": 2,
+        "layer_range": [
+            21,
+            32
+        ]
+    },
+    {
+        "LINEAR_GELU": 0,
+        "LINEAR_MAPPING": 0,
+        "LINEAR_INPUT": 4,
+        "ATTENTION_BMM": 0,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 0,
+        "ATTENTION_QKV": 0,
+        "stage_idx": 3,
+        "layer_range": [
+            33,
+            44
+        ]
+    },
+    {
+        "LINEAR_GELU": 0,
+        "LINEAR_MAPPING": 0,
+        "LINEAR_INPUT": 5,
+        "ATTENTION_BMM": 0,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 0,
+        "ATTENTION_QKV": 0,
+        "stage_idx": 4,
+        "layer_range": [
+            45,
+            56
+        ]
+    },
+    {
+        "LINEAR_GELU": 0,
+        "LINEAR_MAPPING": 0,
+        "LINEAR_INPUT": 5,
+        "ATTENTION_BMM": 0,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 0,
+        "ATTENTION_QKV": 0,
+        "stage_idx": 5,
+        "layer_range": [
+            57,
+            68
+        ]
+    },
+    {
+        "LINEAR_GELU": 0,
+        "LINEAR_MAPPING": 0,
+        "LINEAR_INPUT": 6,
+        "ATTENTION_BMM": 0,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 0,
+        "ATTENTION_QKV": 0,
+        "stage_idx": 6,
+        "layer_range": [
+            69,
+            80
+        ]
+    },
+    {
+        "LINEAR_GELU": 0,
+        "LINEAR_MAPPING": 0,
+        "LINEAR_INPUT": 6,
+        "ATTENTION_BMM": 0,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 0,
+        "ATTENTION_QKV": 2,
+        "stage_idx": 7,
+        "layer_range": [
+            81,
+            92
+        ]
+    },
+    {
+        "LINEAR_GELU": 0,
+        "LINEAR_MAPPING": 0,
+        "LINEAR_INPUT": 6,
+        "ATTENTION_BMM": 0,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 0,
+        "ATTENTION_QKV": 3,
+        "stage_idx": 8,
+        "layer_range": [
+            93,
+            104
+        ]
+    },
+    {
+        "LINEAR_GELU": 0,
+        "LINEAR_MAPPING": 0,
+        "LINEAR_INPUT": 6,
+        "ATTENTION_BMM": 0,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 0,
+        "ATTENTION_QKV": 5,
+        "stage_idx": 9,
+        "layer_range": [
+            105,
+            116
+        ]
+    },
+    {
+        "LINEAR_GELU": 0,
+        "LINEAR_MAPPING": 0,
+        "LINEAR_INPUT": 6,
+        "ATTENTION_BMM": 0,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 0,
+        "ATTENTION_QKV": 7,
+        "stage_idx": 10,
+        "layer_range": [
+            117,
+            128
+        ]
+    },
+    {
+        "LINEAR_GELU": 0,
+        "LINEAR_MAPPING": 0,
+        "LINEAR_INPUT": 6,
+        "ATTENTION_BMM": 0,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 0,
+        "ATTENTION_QKV": 10,
+        "stage_idx": 11,
+        "layer_range": [
+            129,
+            140
+        ]
+    },
+    {
+        "LINEAR_GELU": 0,
+        "LINEAR_MAPPING": 0,
+        "LINEAR_INPUT": 6,
+        "ATTENTION_BMM": 0,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 0,
+        "ATTENTION_QKV": 13,
+        "stage_idx": 12,
+        "layer_range": [
+            141,
+            152
+        ]
+    },
+    {
+        "LINEAR_GELU": 0,
+        "LINEAR_MAPPING": 0,
+        "LINEAR_INPUT": 6,
+        "ATTENTION_BMM": 1,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 0,
+        "ATTENTION_QKV": 18,
+        "stage_idx": 13,
+        "layer_range": [
+            153,
+            164
+        ]
+    },
+    {
+        "LINEAR_GELU": 0,
+        "LINEAR_MAPPING": 0,
+        "LINEAR_INPUT": 6,
+        "ATTENTION_BMM": 6,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 0,
+        "ATTENTION_QKV": 18,
+        "stage_idx": 14,
+        "layer_range": [
+            165,
+            176
+        ]
+    },
+    {
+        "LINEAR_GELU": 0,
+        "LINEAR_MAPPING": 2,
+        "LINEAR_INPUT": 6,
+        "ATTENTION_BMM": 5,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 0,
+        "ATTENTION_QKV": 18,
+        "stage_idx": 15,
+        "layer_range": [
+            177,
+            188
+        ]
+    },
+    {
+        "LINEAR_GELU": 0,
+        "LINEAR_MAPPING": 5,
+        "LINEAR_INPUT": 6,
+        "ATTENTION_BMM": 6,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 0,
+        "ATTENTION_QKV": 18,
+        "stage_idx": 16,
+        "layer_range": [
+            189,
+            200
+        ]
+    },
+    {
+        "LINEAR_GELU": 4,
+        "LINEAR_MAPPING": 4,
+        "LINEAR_INPUT": 4,
+        "ATTENTION_BMM": 4,
+        "ATTENTION_SOFTMAX": 0,
+        "ATTENTION_ATTEN": 4,
+        "ATTENTION_QKV": 12,
+        "stage_idx": 17,
+        "layer_range": [
+            201,
+            209
+        ]
+    }
+]
