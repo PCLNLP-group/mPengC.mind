@@ -27,7 +27,6 @@ multilingual PengCheng-Mind 鹏城·多语言脑海大模型是基于Transformer
 | 硬件平台 | 操作系统 | 框架 | 推理设备数量 | 微调设备数量 |
 | :--- | :--- | :--- | :--- | :--- |
 | Ascend 910 | EulerOS-aarch64 | MindSpore | 1卡 | ≥16卡 |
-| NVIDIA A100 | linux | Pytorch | 1卡 | ≥1节点8卡 |
 
 ## 模型演化和开源
 
