@@ -160,4 +160,4 @@ python tools/merge_ckpt.py --local_ckpt_save_name YOUR_LOCAL_SAVE_PATH --obs_ckp
 
 ## 声明
 
-[鹏城·脑海模型开源协议](/docs/鹏城·脑海模型开源协议.pdf)
+[鹏城·多语言脑海模型开源协议](/docs/鹏城·脑海模型开源协议.pdf)
