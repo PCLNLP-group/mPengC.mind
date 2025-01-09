@@ -75,7 +75,7 @@ python predict_mPCmind7B.py \
 
 评测结果：
 
-![My Image](docs/评测结果.png)
+![My Image](docs/翻译评测结果.png)
 
 ## 多语言增量训练
 
