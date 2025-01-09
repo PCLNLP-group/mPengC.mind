@@ -60,7 +60,7 @@ python predict_mPCmind7B.py \
 
 #### 评测结果：
 
-
+![My Image](docs/评测结果.png)
 
 ## 微调
 
