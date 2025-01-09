@@ -1,4 +1,4 @@
-# mPC-mind
+# mPengC.mind
 
 multilingual PengCheng-Mind 鹏城·多语言脑海大模型是基于Transformer架构的自回归式多语言模型。模型全流程基于全自主安全可控国产软硬件平台进行开发和训练，采用MindSpore框架实现在大规模集群上长期稳定的多维分布式并行训练。鹏城·多语言脑海模型以鹏城·脑海7B模型为基座，已完成训练200B Tokens多语言数据，具备中文核心能力以及53个语种的多语言能力。
 
