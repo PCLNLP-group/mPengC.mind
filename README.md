@@ -24,23 +24,28 @@ multilingual PengCheng-Mind 鹏城·多语言脑海大模型是基于Transformer
 
 推荐使用mindspore的官方 docker 镜像。
 
+| 硬件平台 | 操作系统 | 框架 | 推理设备数量 | 微调设备数量 |
+| :--- | :--- | :--- | :--- | :--- |
+| Ascend 910 | EulerOS-aarch64 | MindSpore | 1卡 | ≥16卡 |
+| NVIDIA A100 | linux | Pytorch | 1卡 | ≥1节点8卡 |
+
 ## 模型演化和开源
 
 npu版本模型下载地址：
 
-[Huggingface](https://huggingface.co/PCLNLP/mPengC.mind_npu)
+Huggingface：https://huggingface.co/PCLNLP/mPengC.mind_npu
 
-[魔搭社区](https://modelscope.cn/models/PCLNLP/mPengC.Mind_npu)
+魔搭社区：https://modelscope.cn/models/PCLNLP/mPengC.Mind_npu
 
 gpu版本模型下载地址：
 
-[Huggingface](https://huggingface.co/PCLNLP/mPengC.mind_gpu)
+Huggingface：https://huggingface.co/PCLNLP/mPengC.mind_gpu
 
-[魔搭社区](https://modelscope.cn/models/PCLNLP/mPengC.Mind_gpu)
+魔搭社区：https://modelscope.cn/models/PCLNLP/mPengC.Mind_gpu
 
 ## 推理
 
-### 1、7B鹏城·多语言脑海模型推理
+### 1、7B 鹏城·多语言脑海模型推理
 
 启动命令（--offline 1代表使用NPU裸机，修改脚本中local_ckpt_path为脑海7B预训练模型文件路径; --offline 0代表使用modelarts环境,修改脚本中restore_checkpoint_bucket_dir为脑海7B预训练模型文件路径;）:
 ```
@@ -138,8 +143,24 @@ python tools/merge_ckpt.py --local_ckpt_save_name YOUR_LOCAL_SAVE_PATH --obs_ckp
 
 参考脚本：```/tools/pre_process_data.py```
 
+在 YOUR_DATASET_PATH 目录下存放多个 ```xxx.json``` 文件，如果训练数据较多，最好每个 ```json``` 文件大小统一，且分开多个 ```json``` 存放，
+大小可以 1M 一个文件。如果有繁体文字，需要转成简体，可以使用```zhconv```。
 
+每个json文本格式为（需要换行符号分割不同样本），样本通过flag字段区分为通用语料(open)、单语语料(mono)、平行语料(parallel)：
 
+```
+{"text":"sample", "flag":"open"}
+{"text":"zh_sample", "lang":"zh", "flag":"mono"}
+{"text":{"src": "zh_sample", "tag": "en_sample"}, "src_lang":"zh", "tgt_lang":"en", "flag":"parallel"}
+```
+
+单语语料和平行语料分别包含了对应的语言标识字段，json样本文本格式具体可参考：```/data/pretrain_sample.txt```。
+
+```
+python pre_process_data.py --input_glob "YOUR_DATASET_PATH/*.json" --output_file "YOUR_OUTPUT_PATH/mindrecord" --SEQ_LEN 4097
+```
+
+将会在YOUR_OUTPUT_PATH目录下生成mindrecord* 文件。
 
 ## NPU模型转GPU
 
