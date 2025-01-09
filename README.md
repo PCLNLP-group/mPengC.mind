@@ -69,13 +69,13 @@ python predict_mPCmind7B.py \
 --offline 0
 ```
 
-### 2、翻译结果评测
+### 2、翻译评测
 
 我们使用flores-200数据集在53个语种上进行翻译测试，测试结果采用sacrebleu指标。
 
 评测数据：```/data/mPC_flores-devtest.json```
 
-#### 评测结果：
+评测结果：
 
 ![My Image](docs/评测结果.png)
 
