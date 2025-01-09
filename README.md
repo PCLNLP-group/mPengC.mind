@@ -26,6 +26,18 @@ multilingual PengCheng-Mind 鹏城·多语言脑海大模型是基于Transformer
 
 ## 模型演化和开源
 
+npu版本模型下载地址：
+
+[Huggingface](https://huggingface.co/PCLNLP/mPengC.mind_npu)
+
+[魔搭社区](https://modelscope.cn/models/PCLNLP/mPengC.Mind_npu)
+
+gpu版本模型下载地址：
+
+[Huggingface](https://huggingface.co/PCLNLP/mPengC.mind_gpu)
+
+[魔搭社区](https://modelscope.cn/models/PCLNLP/mPengC.Mind_gpu)
+
 ## 推理
 
 ### 1、7B鹏城·多语言脑海模型推理
@@ -56,7 +68,7 @@ python predict_mPCmind7B.py \
 
 我们使用flores-200数据集在53个语种上进行翻译测试，测试结果采用sacrebleu指标。
 
-评测数据：```/inference/mPC_flores-devtest.json```
+评测数据：```/data/mPC_flores-devtest.json```
 
 #### 评测结果：
 
@@ -66,7 +78,7 @@ python predict_mPCmind7B.py \
 
 ### 1、准备训练数据
 
-
+参考[数据](#数据)部分
 
 ### 2、预训练模型加载，增量训练
 
@@ -122,9 +134,17 @@ python tools/merge_ckpt.py --local_ckpt_save_name YOUR_LOCAL_SAVE_PATH --obs_ckp
 
 ## 数据
 
-### 生成数据
+### 生成训练数据
+
+参考脚本：```/tools/pre_process_data.py```
+
 
 
 
 ## NPU模型转GPU
 
+模型转换见：https://huggingface.co/PCLNLP/mPengC.mind_gpu
+
+## 声明
+
+[鹏城·脑海模型开源协议](/docs/鹏城·脑海模型开源协议.pdf)
