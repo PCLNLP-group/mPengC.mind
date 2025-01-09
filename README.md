@@ -4,7 +4,7 @@ multilingual PengCheng-Mind 鹏城·多语言脑海大模型是基于Transformer
 
 # 要点
 
-* 支持53语种多语言模型「鹏城·多语言脑海」
+* 支持53个语种的多语言模型「鹏城·多语言脑海」
 * 代码、模型全开源
 * MindSpore超大规模自动并行技术
 * 模型基于国产全栈式软硬件协同生态（MindSpore+CANN+昇腾910+ModelArts）
