@@ -32,16 +32,14 @@ multilingual PengCheng-Mind 鹏城·多语言脑海大模型是基于Transformer
 
 npu版本模型下载地址：
 
-Huggingface：https://huggingface.co/PCLNLP/mPengC.mind_npu
+Huggingface：https://huggingface.co/PCLNLP/mPengC.mind_npu/tree/main
 
-魔搭社区：https://modelscope.cn/models/PCLNLP/mPengC.Mind_npu
+魔搭社区：https://modelscope.cn/models/PCLNLP/mPengC.Mind_npu/files
 
 gpu版本模型下载地址：
 
-Huggingface：https://huggingface.co/PCLNLP/mPengC.mind_gpu
-
-魔搭社区：https://modelscope.cn/models/PCLNLP/mPengC.Mind_gpu
-
+Huggingface：https://huggingface.co/PCLNLP/mPengC.mind_gpu/tree/main
+魔搭社区：https://modelscope.cn/models/PCLNLP/mPengC.Mind_gpu/files
 ## 推理
 
 ### 1、7B 鹏城·多语言脑海模型推理
@@ -80,9 +78,28 @@ python predict_mPCmind7B.py \
 
 ## 微调
 
-### 1、准备训练数据
+### 1、训练数据
 
-参考[数据](#数据)部分
+参考脚本：```/tools/pre_process_data.py```
+
+在 YOUR_DATASET_PATH 目录下存放多个 ```xxx.json``` 文件，如果训练数据较多，最好每个 ```json``` 文件大小统一，且分开多个 ```json``` 存放，
+大小可以 1M 一个文件。如果有繁体文字，需要转成简体，可以使用```zhconv```。
+
+每个json文本格式为（需要换行符号分割不同样本），样本通过flag字段区分为通用语料(open)、单语语料(mono)、平行语料(parallel)：
+
+```
+{"text":"sample", "flag":"open"}
+{"text":"zh_sample", "lang":"zh", "flag":"mono"}
+{"text":{"src": "zh_sample", "tag": "en_sample"}, "src_lang":"zh", "tgt_lang":"en", "flag":"parallel"}
+```
+
+单语语料和平行语料分别包含了对应的语言标识字段，json样本文本格式具体可参考：```/data/pretrain_sample.txt```。
+
+```
+python pre_process_data.py --input_glob "YOUR_DATASET_PATH/*.json" --output_file "YOUR_OUTPUT_PATH/mindrecord" --SEQ_LEN 4097
+```
+
+将会在YOUR_OUTPUT_PATH目录下生成mindrecord* 文件。
 
 ### 2、预训练模型加载，增量训练
 
@@ -135,31 +152,6 @@ python train_mPCmind7B.py \
 python tools/merge_ckpt.py --local_ckpt_save_name YOUR_LOCAL_SAVE_PATH --obs_ckpt_save_name YOUR_OBS_SAVE_PATH --restore_checkpoint_bucket_dir YOUR_MODEL_PATH --restore_ckpt_name_prefix YOUR_MODEL_PREFIX --rank YOUR_DEVICE_NUM --strategy YOUR_MERGED_STRATEGY_FILE
 ```
 策略文件合并可使用mindspore.merge_pipeline_strategys进行。
-
-## 数据
-
-### 生成训练数据
-
-参考脚本：```/tools/pre_process_data.py```
-
-在 YOUR_DATASET_PATH 目录下存放多个 ```xxx.json``` 文件，如果训练数据较多，最好每个 ```json``` 文件大小统一，且分开多个 ```json``` 存放，
-大小可以 1M 一个文件。如果有繁体文字，需要转成简体，可以使用```zhconv```。
-
-每个json文本格式为（需要换行符号分割不同样本），样本通过flag字段区分为通用语料(open)、单语语料(mono)、平行语料(parallel)：
-
-```
-{"text":"sample", "flag":"open"}
-{"text":"zh_sample", "lang":"zh", "flag":"mono"}
-{"text":{"src": "zh_sample", "tag": "en_sample"}, "src_lang":"zh", "tgt_lang":"en", "flag":"parallel"}
-```
-
-单语语料和平行语料分别包含了对应的语言标识字段，json样本文本格式具体可参考：```/data/pretrain_sample.txt```。
-
-```
-python pre_process_data.py --input_glob "YOUR_DATASET_PATH/*.json" --output_file "YOUR_OUTPUT_PATH/mindrecord" --SEQ_LEN 4097
-```
-
-将会在YOUR_OUTPUT_PATH目录下生成mindrecord* 文件。
 
 ## NPU模型转GPU
 
