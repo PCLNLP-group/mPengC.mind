@@ -39,6 +39,7 @@ Huggingface：https://huggingface.co/PCLNLP/mPengC.mind_npu/tree/main
 gpu版本模型下载地址：
 
 Huggingface：https://huggingface.co/PCLNLP/mPengC.mind_gpu/tree/main
+
 魔搭社区：https://modelscope.cn/models/PCLNLP/mPengC.Mind_gpu/files
 ## 推理
 
