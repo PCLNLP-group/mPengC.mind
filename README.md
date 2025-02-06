@@ -1,17 +1,17 @@
 # mPengC.mind
 
-multilingual PengCheng.Mind 鹏城·多语言脑海大模型是基于Transformer架构的自回归式多语言模型。模型全流程基于全自主安全可控国产软硬件平台进行开发和训练，采用MindSpore框架实现在大规模集群上长期稳定的多维分布式并行训练。鹏城·多语言脑海模型以鹏城·脑海7B模型为基座，已完成训练200B Tokens多语言数据，具备中文核心能力以及53个语种的多语言能力。
+PengCheng.Mind-m1(Mind-m1) is a multilingual large model developed by Pengcheng Laboratory, China, which is officially open-sourced for research purposes.  It is built upon a 7 billion model called PengCheng.Mind which focuses primarily on Chinese through multilingual incremental learning with the high-quality multilingual data. 
 
-# 要点
+# Highlights
 
-* 支持53个语种的多语言模型「鹏城·多语言脑海」
-* 代码、模型全开源
-* MindSpore超大规模自动并行技术
-* 模型基于国产全栈式软硬件协同生态（MindSpore+CANN+昇腾910+ModelArts）
+* Fully open-sourced code and model
+* Supports the understanding and generation of 53 languages
+* Supports both GPU and NPU to facilitate different types of users
 
-## 模型结构
 
-| multilingual PengCheng.Mind 7B | 结构参数 |
+## Model architecture
+
+| multilingual PengCheng.Mind 7B | Structural Parameters |
 | :---- | :---- |
 | seq_length | 4096 |
 | vocab_size | 125952 |
@@ -19,33 +19,40 @@ multilingual PengCheng.Mind 鹏城·多语言脑海大模型是基于Transformer
 | num_layers | 32 |
 |num_heads | 32 |
 
-## 环境要求
-支持 python >= 3.7.5, mindspore >= 2.0.0-beta 版本.
 
-推荐使用mindspore的官方 docker 镜像。
+## Requirements
+### * NPU model:
+python >= 3.7.5, mindspore >= 2.0.0-beta
 
-| 硬件平台 | 操作系统 | 框架 | 推理设备数量 | 微调设备数量 |
+It is recommended to use MindSpore's official Docker image.
+
+| Hardware Platform | OS | Framework | #Inference Devices | #Fine-tuning Devices |
 | :--- | :--- | :--- | :--- | :--- |
-| Ascend 910 | EulerOS-aarch64 | MindSpore | 1卡 | ≥16卡 |
+| Ascend 910 | EulerOS-aarch64 | MindSpore | 1 | ≥16 |
+### * GPU model:
+Please refer to：https://huggingface.co/PCLNLP/mPengC.mind_gpu/tree/main
 
-## 模型演化和开源
+## Model evolution and open-source
 
-npu版本模型下载地址：
+NPU Model：
 
 Huggingface：https://huggingface.co/PCLNLP/mPengC.mind_npu/tree/main
 
-魔搭社区：https://modelscope.cn/models/PCLNLP/mPengC.Mind_npu/files
+ModelScope：https://modelscope.cn/models/PCLNLP/mPengC.Mind_npu/files
 
-gpu版本模型下载地址：
+GPU Model：
 
 Huggingface：https://huggingface.co/PCLNLP/mPengC.mind_gpu/tree/main
 
-魔搭社区：https://modelscope.cn/models/PCLNLP/mPengC.Mind_gpu/files
-## 推理
+ModelScope：https://modelscope.cn/models/PCLNLP/mPengC.Mind_gpu/files
 
-### 1、7B 鹏城·多语言脑海模型推理
 
-启动命令（--offline 1代表使用NPU裸机，修改脚本中local_ckpt_path为脑海7B预训练模型文件路径; --offline 0代表使用modelarts环境,修改脚本中restore_checkpoint_bucket_dir为脑海7B预训练模型文件路径;）:
+## Inference
+
+### 1. Inference of the 7B Mind-m1
+
+Startup command (`--offline 1` indicates using the NPU bare - metal machine. Modify `local_ckpt_path` in the script to the path of the 7B pre-trained model. `--offline 0` indicates using the ModelArts environment. Modify `restore_checkpoint_bucket_dir` in the script to the path of the 7B pre-trained model):
+
 ```
 python predict_mPCmind7B.py \
 --run_type predict \
@@ -67,44 +74,47 @@ python predict_mPCmind7B.py \
 --offline 0
 ```
 
-### 2、翻译评测
+### 2. Translation Evaluation
 
-我们使用flores-200数据集在53个语种上进行翻译测试，测试结果采用sacrebleu指标。
+We conducted translation tests on 53 languages using the FLORES-200 dataset, and the SacreBLEU metric was used to evaluate the test results.
 
-评测数据：```/data/mPC_flores-devtest.json```
+Test Data：```/data/mPC_flores-devtest.json```
 
-评测结果：
+Test Results：
 
 ![My Image](docs/翻译评测结果.png)
 
-## 多语言增量训练
 
-### 1、训练数据
 
-参考脚本：```/tools/pre_process_data.py```
+## Multilingual Incremental Learning
 
-在 YOUR_DATASET_PATH 目录下存放多个 ```xxx.json``` 文件，如果训练数据较多，最好每个 ```json``` 文件大小统一，且分开多个 ```json``` 存放，
-大小可以 1M 一个文件。如果有繁体文字，需要转成简体，可以使用```zhconv```。
+### 1. Training Data
 
-每个json文本格式为（需要换行符号分割不同样本），样本通过flag字段区分为通用语料(open)、单语语料(mono)、平行语料(parallel)：
+Reference script：```/tools/pre_process_data.py```
 
+Store multiple `xxx.json` files in the `YOUR_DATASET_PATH` directory. If you have a large amount of training data, it's best to keep the size of each json file consistent and split the data into multiple json files. Each file can be about 1MB in size.
+If there are traditional Chinese characters, you need to convert them to simplified Chinese. You can use `zhconv` for this conversion.
+
+The format of each JSON file is as follows: 
+- different samples need to be separated by line-break symbols
+- samples are classified into general corpora (open), monolingual corpora (mono), and parallel corpora (parallel) according to the "flag" field.
 ```
 {"text":"sample", "flag":"open"}
 {"text":"zh_sample", "lang":"zh", "flag":"mono"}
 {"text":{"src": "zh_sample", "tag": "en_sample"}, "src_lang":"zh", "tgt_lang":"en", "flag":"parallel"}
 ```
 
-单语语料和平行语料分别包含了对应的语言标识字段，json样本文本格式具体可参考：```/data/pretrain_sample.txt```。
+The monolingual corpora and parallel corpora each contain corresponding language identification fields. For the specific text format of the JSON sample, please refer to: ```/data/pretrain_sample.txt```.
 
 ```
 python pre_process_data.py --input_glob "YOUR_DATASET_PATH/*.json" --output_file "YOUR_OUTPUT_PATH/mindrecord" --SEQ_LEN 4097
 ```
 
-将会在YOUR_OUTPUT_PATH目录下生成mindrecord* 文件。
+mindrecord* files will be generated in the `YOUR_OUTPUT_PATH` directory.
 
-### 2、预训练模型加载，增量训练
+### 2. Incremental Learning with Pre-trained Model
 
-启动命令（修改脚本中 restore_checkpoint_bucket_dir、restore_ckpt_name_prefix为多语言脑海7B预训练模型文件路径）：
+Startup command (modify `restore_checkpoint_bucket_dir` and `restore_ckpt_name_prefix` in the script to the path of the 7B pre-trained model):
 
 ```
 python train_mPCmind7B.py \
@@ -144,20 +154,21 @@ python train_mPCmind7B.py \
 --pre_trained True
 ```
 
-### 3、模型合并
+### 3. Merging Checkpoints
 
-增量训练后的模型是分片的，如果要进行推理，则需要先对模型进行合并。
+The model after incremental learning is sharded. If you want to perform inference, you need to merge the checkpoints first.
 
-合并脚本参考：
+Reference script：
 ```
 python tools/merge_ckpt.py --local_ckpt_save_name YOUR_LOCAL_SAVE_PATH --obs_ckpt_save_name YOUR_OBS_SAVE_PATH --restore_checkpoint_bucket_dir YOUR_MODEL_PATH --restore_ckpt_name_prefix YOUR_MODEL_PREFIX --rank YOUR_DEVICE_NUM --strategy YOUR_MERGED_STRATEGY_FILE
 ```
-策略文件合并可使用mindspore.merge_pipeline_strategys进行。
+You can use `mindspore.merge_pipeline_strategys` to merge the strategy files.
 
-## NPU模型转GPU
+## Convert the NPU model to a GPU model
 
-模型转换见：https://huggingface.co/PCLNLP/mPengC.mind_gpu
+Converted model：https://huggingface.co/PCLNLP/mPengC.mind_gpu
 
-## 声明
+## Statement
 
-[鹏城·多语言脑海模型开源协议](/docs/鹏城·脑海模型开源协议.pdf)
+[Open-source license of the PengCheng.Mind-m1](/docs/鹏城·脑海模型开源协议.pdf)
+
